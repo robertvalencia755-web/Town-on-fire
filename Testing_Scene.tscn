@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b6ruf2gg1v6lq"]
 
-[ext_resource type="Script" uid="uid://bnayikojjq863" path="res://Player_Controller.gd" id="1_0xgub"]
+[ext_resource type="PackedScene" uid="uid://b02io2sqjk47c" path="res://player.tscn" id="1_0xgub"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xgub"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -12,26 +12,6 @@ sky_material = SubResource("ProceduralSkyMaterial_0xgub")
 [sub_resource type="Environment" id="Environment_7u6uq"]
 background_mode = 2
 sky = SubResource("Sky_xp3i0")
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u1udy"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_u1udy"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ko4s"]
-cull_mode = 1
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.14146611, 0.044361554, 0.26596066, 1)
-grow = true
-grow_amount = 0.03
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui7yr"]
-next_pass = SubResource("StandardMaterial3D_5ko4s")
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.6587103, 0.43739495, 0.68363047, 1)
-roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1udy"]
 shading_mode = 0
@@ -50,24 +30,8 @@ roughness = 0.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=246895032]
 environment = SubResource("Environment_7u6uq")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=147877721]
+[node name="Player" parent="." unique_id=1777205412 instance=ExtResource("1_0xgub")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2640015, 0)
-script = ExtResource("1_0xgub")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1932607488]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_u1udy")
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="CharacterBody3D" unique_id=270830965]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_u1udy")
-material = SubResource("StandardMaterial3D_ui7yr")
-
-[node name="Node3D" type="Node3D" parent="CharacterBody3D" unique_id=968704030]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5000001, 0)
-
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Node3D" unique_id=1657004835]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010963678, -0.6)
 
 [node name="Node3D" type="Node3D" parent="." unique_id=177211927]
 
