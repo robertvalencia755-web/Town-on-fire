@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://b6ruf2gg1v6lq"]
+
+[ext_resource type="PackedScene" uid="uid://b02io2sqjk47c" path="res://player.tscn" id="1_0xgub"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xgub"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_xp3i0"]
+sky_material = SubResource("ProceduralSkyMaterial_0xgub")
+
+[sub_resource type="Environment" id="Environment_7u6uq"]
+background_mode = 2
+sky = SubResource("Sky_xp3i0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1udy"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.5191621, 0.5191618, 0.51916206, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xgub"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.31013423, 0.61058575, 0.40085453, 1)
+roughness = 0.0
+
+[node name="Node3D" type="Node3D" unique_id=1599411514]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=246895032]
+environment = SubResource("Environment_7u6uq")
+
+[node name="Player" parent="." unique_id=1777205412 instance=ExtResource("1_0xgub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2640015, 0)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=177211927]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D" unique_id=279001076]
+transform = Transform3D(14.400001, 0, 0, 0, 1, 0, 0, 0, 14.400001, 0, 0, 0)
+use_collision = true
+size = Vector3(6, 0.1, 6)
+material = SubResource("StandardMaterial3D_u1udy")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Node3D" unique_id=1551162245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5946655, 0.7699585, -6.3218594)
+use_collision = true
+size = Vector3(4.189331, 1.539917, 4.1118164)
+material = SubResource("StandardMaterial3D_0xgub")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Node3D/CSGBox3D2" unique_id=1419297496]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.505335, -0.030041516, 2.1781406)
+size = Vector3(4.189331, 1.539917, 4.1118164)
+material = SubResource("StandardMaterial3D_0xgub")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1758261506]
+transform = Transform3D(1, 0, 0, 0, 0.5237811, 0.85185295, 0, -0.85185295, 0.5237811, 0, 5.5385485, 3.9015322)
